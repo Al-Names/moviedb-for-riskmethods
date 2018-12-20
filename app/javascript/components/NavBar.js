@@ -1,28 +1,19 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 class NavBar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-default">
+      <nav className="navbar navbar-inverse">
         <div className="container-fluid">
           <div className="navbar-header">
-            <Link className="navbar-brand" to="/">
+            <NavLink className="navbar-brand" to="/">
               RiskMethods
-            </Link>
+            </NavLink>
           </div>
           <ul className="nav navbar-nav">
             <li className="active">
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <a href="#">Page 1</a>
-            </li>
-            <li>
-              <a href="#">Page 2</a>
-            </li>
-            <li>
-              <a href="#">Page 3</a>
+              <NavLink to="/">Home</NavLink>
             </li>
           </ul>
         </div>

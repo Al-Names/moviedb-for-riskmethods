@@ -1,69 +1,96 @@
 import React, { Component } from "react";
-import $ from "jquery";
 
 import MovieGrid from "./MovieGrid";
 
+const URL = "https://api.themoviedb.org/3/search/movie?api_key=";
+const API_KEY = "43c6ae78a7b5799e0a7efaee367f829a";
+const language = "&language=en-US";
+const query = "&query=";
+
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  state = {
+    movies: [],
+    total_pages: null,
+    page_num: 1,
+    query: "ant"
+  };
 
-    this.performSearch("ant man");
+  fetchMovies(search) {
+    fetch(
+      URL +
+        `${API_KEY}` +
+        language +
+        query +
+        search +
+        "&page=" +
+        this.state.page_num
+    )
+      .then(res => res.json())
+      .then(json =>
+        this.setState({ movies: json.results, total_pages: json.total_pages })
+      );
   }
 
-  performSearch(searchTerm) {
-    console.log("Perform search using moviedb");
-    const urlString =
-      "https://api.themoviedb.org/3/search/movie?api_key=43c6ae78a7b5799e0a7efaee367f829a&query=" +
-      searchTerm;
-    $.ajax({
-      url: urlString,
-      success: searchResults => {
-        console.log("Fetched data successfully");
-        // console.log(searchResults)
-        const results = searchResults.results;
-        // console.log(results[0])
-
-        var movieRows = [];
-
-        results.forEach(movie => {
-          movie.poster_src =
-            "https://image.tmdb.org/t/p/w185" + movie.poster_path;
-          // console.log(movie.poster_path)
-          const movieRow = <MovieGrid key={movie.id} movie={movie} />;
-          movieRows.push(movieRow);
-        });
-
-        this.setState({ rows: movieRows });
+  filterSearch = event => {
+    let term = event.target.value;
+    this.setState(
+      {
+        query: term
       },
-      error: (xhr, status, err) => {
-        console.error("Failed to fetch data");
-      }
-    });
-  }
+      () => this.fetchMovies(this.state.query)
+    );
+  };
 
-  searchChangeHandler(event) {
-    console.log(event.target.value);
-    const boundObject = this;
-    const searchTerm = event.target.value;
-    boundObject.performSearch(searchTerm);
-  }
+  nextPage = () => {
+    if (this.state.movies && this.state.page_num < this.state.total_pages) {
+      this.setState(
+        {
+          page_num: (this.state.page_num += 1)
+        },
+        () => this.fetchMovies(this.state.query)
+      );
+    }
+  };
+
+  previousPage = () => {
+    if (this.state.movies && this.state.page_num !== 1) {
+      this.setState(
+        {
+          page_num: (this.state.page_num -= 1)
+        },
+        () => this.fetchMovies(this.state.query)
+      );
+    }
+  };
+
   render() {
     return (
       <div>
-        <h1>Movie Database goes here</h1>
         <div className="form-group">
-          <input
-            className="form-control"
-            type="text"
-            onChange={this.searchChangeHandler.bind(this)}
-            placeholder="Search..."
-          />
+          <input onChange={this.filterSearch} className="form-control" />
         </div>
-        <div>
-          <div>
-            <div className="card-columns">{this.state.rows}</div>
+        <div className="screen">
+          <div className="card-columns">
+            {this.state.movies
+              ? this.state.movies.map(movie => (
+                  <MovieGrid key={movie.id} movie={movie} />
+                ))
+              : null}
           </div>
+        </div>
+        <div className="buttonBag">
+          <button
+            onClick={this.previousPage}
+            className="btn btn-primary previousButton"
+          >
+            Previous Page
+          </button>
+          <button
+            onClick={this.nextPage}
+            className="btn btn-primary nextButton"
+          >
+            Next Page
+          </button>
         </div>
       </div>
     );

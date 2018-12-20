@@ -1,7 +1,42 @@
 body {
-    background-color: #2f2f2f
+    background-color: #2f2f2f;
 }
 
 .card {
-    box-shadow: blue
+    box-shadow: blue;
+}
+
+.buttonBag {
+    margin: 0 auto;
+}
+
+.previousButton {
+    float: left;
+}
+
+.nextButton {
+    float: right;
+}
+
+.entry {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.choice {
+    text-align: center;
+    color: white !important;
+    border: 5px solid white;
+    border-radius: 10px;
+    height: 300px;
+    width: 300px;
+    margin: 50px;
+    padding-top: 100px;
+}
+
+.navbar {
+    color: white;
 }

@@ -4,17 +4,21 @@ export default class Landing extends Component {
   render() {
     return (
       <div>
-        <h1 className="text-center">Welcom to MovieDB</h1>
+        <h1 className="text-center" style={{ color: "white" }}>
+          Welcome to MovieDB
+        </h1>
 
-        <div>
-          <h2>
-            <Link to="/home">Home</Link>
-          </h2>
-        </div>
-        <div>
-          <h2>
-            <Link to="/">My Collection</Link>
-          </h2>
+        <div className="entry">
+          <Link to="/home">
+            <div className="choice">
+              <h2>Database</h2>
+            </div>
+          </Link>
+          <Link to="/dashboard">
+            <div className="choice">
+              <h2>My Collection</h2>
+            </div>
+          </Link>
         </div>
       </div>
     );

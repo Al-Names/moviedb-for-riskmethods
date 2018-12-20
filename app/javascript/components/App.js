@@ -5,6 +5,7 @@ import "../styles/risk.css";
 import NavBar from "../components/NavBar";
 import Landing from "../components/Landing";
 import Home from "../components/Home";
+import Dashboard from "./Dashboard";
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/home" component={Home} />
+            <Route exact path="/dashboard" component={Dashboard} />
           </Switch>
         </div>
       </div>
