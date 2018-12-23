@@ -11,9 +11,12 @@ class NavBar extends Component {
               RiskMethods
             </NavLink>
           </div>
-          <ul className="nav navbar-nav">
+          <ul className="nav navbar-nav navbar-right">
             <li className="active">
               <NavLink to="/">Home</NavLink>
+            </li>
+            <li className="active">
+              <NavLink to="/collection">Collection</NavLink>
             </li>
           </ul>
         </div>

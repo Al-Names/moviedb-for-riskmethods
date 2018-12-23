@@ -14,7 +14,7 @@ const MovieGrid = props => (
     <div className="card-body">
       <h4 className="card-title">{props.movie.title}</h4>
       <hr />
-      <h4>{props.movie.vote_average} &#x270b;</h4>
+      <h4>{props.movie.vote_average / 2} &#x270b;</h4>
       <p className="card-text">{props.movie.overview}</p>
     </div>
   </div>

@@ -14,7 +14,7 @@ export default class Landing extends Component {
               <h2>Database</h2>
             </div>
           </Link>
-          <Link to="/dashboard">
+          <Link to="/collection">
             <div className="choice">
               <h2>My Collection</h2>
             </div>
