@@ -8,7 +8,6 @@ import Landing from "../components/Landing";
 import Home from "../components/Home";
 import Collection from "./Collection";
 import AddMovie from "./AddMovie";
-import EditMovie from "./EditMovie";
 import PageNotFound from "./PageNotFound";
 
 class App extends Component {
@@ -23,7 +22,7 @@ class App extends Component {
 
               <Route exact path="/collection" component={Collection} />
               <Route exact path="/collection/add" component={AddMovie} />
-              <Route exact path="/collection/edit/:id" component={EditMovie} />
+
               <Route component={PageNotFound} />
             </Switch>
           </div>

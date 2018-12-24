@@ -18,16 +18,6 @@ const reducer = (state, action) => {
         collectionItems: [action.payload, ...state.collectionItems]
       };
 
-    case "UPDATE_ITEM":
-      return {
-        ...state,
-        collectionItems: state.collectionItems.map(contact =>
-          collectionItem.id === action.payload.id
-            ? (collectionItem = action.payload)
-            : collectionItem
-        )
-      };
-
     default:
       return state;
   }

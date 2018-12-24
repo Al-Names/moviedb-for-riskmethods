@@ -33,16 +33,6 @@ class CollectionItem extends Component {
                   style={{ cursor: "pointer", float: "right", color: "red" }}
                   onClick={this.onDeleteClick.bind(this, id, dispatch)}
                 />
-                <Link to={`collection/edit/${id}`}>
-                  <i
-                    className="fas fa-pencil-alt"
-                    style={{
-                      marginRight: "1rem",
-                      float: "right",
-                      cursor: "pointer"
-                    }}
-                  />
-                </Link>
                 <hr />
                 <h4>{rating} &#x270b;</h4>
                 <p className="card-text">{description}</p>
