@@ -31,18 +31,6 @@ export class Provider extends Component {
         title: "Title of movie",
         rating: 4,
         description: "Description of movie"
-      },
-      {
-        id: 2,
-        title: "High School Musical",
-        rating: 4,
-        description: "horror"
-      },
-      {
-        id: 3,
-        title: "Camp Rock",
-        rating: 4,
-        description: "The better one tbh."
       }
     ],
 
