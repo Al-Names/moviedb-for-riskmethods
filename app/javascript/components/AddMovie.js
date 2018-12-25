@@ -57,7 +57,7 @@ class AddMovie extends Component {
           const { dispatch } = value;
           return (
             <div className="dashboardWrapper">
-              <h2>Add Movie Component</h2>
+              <h2>Add To Collection</h2>
 
               <div className="formWrapper">
                 <div className="card formCard">

@@ -12,14 +12,13 @@ class Collection extends Component {
           const { collectionItems } = value;
           return (
             <div className="dashboardWrapper">
-              <h2>dashboard here</h2>
               <div>
                 <Link to="/collection/add">
                   <button className="btn btn-primary">Add To Collection</button>
                 </Link>
               </div>
+              <h2>My Collection</h2>
               <div>
-                <h3>Collection Here</h3>
                 <div className="card-columns">
                   {collectionItems.map(collectionItem => (
                     <CollectionItem
